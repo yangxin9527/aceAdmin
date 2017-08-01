@@ -3,7 +3,7 @@
 
 <!-- ajax layout which only needs content area -->
 <div class="page-header">
-	<h1>Content sliders based on Bootstrap modals
+	<h1>Bootstrap内容滑动模块
 	</h1>
 </div><!-- /.page-header -->
 
@@ -14,7 +14,7 @@
 			<button class="close" data-dismiss="alert">
 				<i class="ace-icon fa fa-times"></i>
 			</button>
-			You can use any button to toggle sliders!
+			您可以使用任何按钮来切换滑块！
 		</div>
 
 		<div id="top-menu" class="modal aside" data-fixed="true" data-placement="top" data-background="true" data-backdrop="invisible" tabindex="-1">
@@ -84,7 +84,7 @@
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 								<span class="white">&times;</span>
 							</button>
-							Based on Modal boxes
+							基于模态盒
 						</div>
 					</div>
 
@@ -152,7 +152,7 @@
 			</div><!-- /.modal-dialog -->
 		</div>
 		<a href="#my-modal" role="button" class="bigger-125 bg-primary white" data-toggle="modal">
-			&nbsp; Content Slider inside Modal Box &nbsp;
+			&nbsp; 模态框内滑动
 		</a>
 
 		<div id="my-modal" class="modal fade" tabindex="-1">
@@ -160,11 +160,11 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h3 class="smaller lighter blue no-margin">A modal with a slider in it!</h3>
+						<h3 class="smaller lighter blue no-margin">一个内部有滑动的模态框</h3>
 					</div>
 
 					<div class="modal-body">
-						Some content
+						内容
 						<br />
 						<br />
 						<br />
@@ -210,86 +210,31 @@
 			</div><!-- /.modal-dialog -->
 		</div>
 
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-
 		<!-- PAGE CONTENT ENDS -->
 	</div><!-- /.col -->
 </div><!-- /.row -->
 
 <!-- page specific plugin scripts -->
 <script type="text/javascript">
-	var scripts = [null, null]
-	$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
-	  //inline scripts related to this page
-		 jQuery(function($) {
-		$('.modal.aside').ace_aside();
-		
-		$('#aside-inside-modal').addClass('aside').ace_aside({container: '#my-modal > .modal-dialog'});
-		
-		//$('#top-menu').modal('show')
-		
-		$(document).one('ajaxloadstart.page', function(e) {
-			//in ajax mode, remove before leaving page
-			$('.modal.aside').remove();
-			$(window).off('.aside')
-		});
-		
-		
-		//make content sliders resizable using jQuery UI (you should include jquery ui files)
-		//$('#right-menu > .modal-dialog').resizable({handles: "w", grid: [ 20, 0 ], minWidth: 200, maxWidth: 600});
-	})
-	});
+    var scripts = [null, null]
+    $('.page-content-area').ace_ajax('loadScripts', scripts, function () {
+        //inline scripts related to this page
+        jQuery(function ($) {
+            $('.modal.aside').ace_aside();
+//
+            $('#aside-inside-modal').addClass('aside').ace_aside({container: '#my-modal > .modal-dialog'});
+//
+//            //$('#top-menu').modal('show')
+//
+            $(document).one('ajaxloadstart.page', function (e) {
+                //in ajax mode, remove before leaving page
+                $('.modal.aside').remove();
+                $(window).off('.aside')
+            });
+
+
+            //make content sliders resizable using jQuery UI (you should include jquery ui files)
+            //$('#right-menu > .modal-dialog').resizable({handles: "w", grid: [ 20, 0 ], minWidth: 200, maxWidth: 600});
+        })
+    });
 </script>

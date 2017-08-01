@@ -2,20 +2,27 @@ require.config({
 	baseUrl: '.',
 	
 	waitSeconds: 600,
-	
+    paths: {
+        "jquery": "../components/jquery/dist/jquery",
+        "bootstrap": "../components/bootstrap/dist/js/bootstrap",
+        "ace": "../assets/js/ace",
+        "ace-elements": "../assets/js/ace-elements",
+		"test":"../components/jquery/dist/test"
+    },
 	shim: {
-		'bootstrap': {
-			deps: ['../components/jquery/dist/jquery.js']
-		},
+
+        'bootstrap': {
+            deps: ['jquery']
+        },
 		'ace': {
-			deps: ['../components/jquery/dist/jquery.js', '../components/bootstrap/dist/js/bootstrap.js']
+			deps: ['jquery', 'bootstrap']
 		},
 		'ace-elements': {
-			deps: ['../assets/js/ace.js']
+			deps: ['ace']
 		}
 	}
 });
-require(['../components/jquery/dist/jquery.js', '../components/bootstrap/dist/js/bootstrap.js', '../assets/js/ace.js', '../assets/js/ace-extra.js', '../assets/js/ace-elements.js'], function($) {
+require(['jquery', 'bootstrap', 'ace', '../assets/js/ace-extra.js', 'ace-elements'], function($) {
 	//try, to hide possible errors in case ace.demo is not available
 	try {
 		ace.demo.init(true);//true means the call is not from inside a jQuery document ready event

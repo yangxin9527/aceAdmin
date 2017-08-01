@@ -4,10 +4,10 @@
 <!-- ajax layout which only needs content area -->
 <div class="page-header">
 	<h1>
-		Buttons &amp; Icon
+		按钮 &amp; 小图标
 		<small>
 			<i class="ace-icon fa fa-angle-double-right"></i>
-			Common Buttons &amp; Icons
+			按钮 &amp; 小图标
 		</small>
 	</h1>
 </div><!-- /.page-header -->
@@ -1815,7 +1815,7 @@
 		 jQuery(function($) {
 		$('#loading-btn').on(ace.click_event, function () {
 			var btn = $(this);
-			btn.button('loading')
+			btn.button('loading');
 			setTimeout(function () {
 				btn.button('reset')
 			}, 2000)
