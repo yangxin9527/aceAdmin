@@ -1,0 +1,11 @@
+myTable
+
+
+<script>
+    var scripts = [null, null];
+    $('.page-content-area').ace_ajax('loadScripts', scripts, function() {
+        $.post("../admin/test.php",function () {
+
+        })
+    });
+</script>

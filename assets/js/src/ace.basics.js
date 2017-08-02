@@ -5,6 +5,7 @@
 //document ready function
 jQuery(function($) {
   try {
+
 	ace.demo.init();
   } catch(e) {}
 });

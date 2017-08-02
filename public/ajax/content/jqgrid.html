@@ -37,7 +37,10 @@
 
 <!-- page specific plugin scripts -->
 <script type="text/javascript">
-	var scripts = [null,"../../components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js","../../components/jqGrid/js/jquery.jqGrid.js","../../components/jqGrid/js/i18n/grid.locale-en.js", null]
+	var scripts = [null,
+		"../../components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js",
+		"../../components/jqGrid/js/jquery.jqGrid.js",
+		"../../components/jqGrid/js/i18n/grid.locale-en.js", null]
 	$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
 	  //inline scripts related to this page
 		 var grid_data = 
