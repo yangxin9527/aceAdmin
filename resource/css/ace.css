@@ -302,6 +302,7 @@ pre.prettyprint {
 .pagination > li > span,
 .pager > li > span {
   border-width: 1px;
+  border-right: none;
   border-radius: 0 !important;
 }
 .pagination > li > a,

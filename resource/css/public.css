@@ -1,0 +1,121 @@
+
+
+
+/*分页样式修改*/
+.pagination input[type="text"]{
+    width:50px;
+    padding: 0 10px;
+    height: 32px;
+    float: left;
+    text-align: center;
+    margin: 0 -1px 0 20px;
+    outline: none;
+    position: relative;
+    z-index: 3;
+}
+
+.pagination .jump-btn{
+    z-index: 1;
+}
+.pagination > li > span:hover{
+    background-color: #fff;
+}
+
+
+/*弹窗*/
+/*确定操作窗口*/
+.pop-create-group{text-align:center;color:#535353;width:400px;padding:20px}
+.pop-create-group dt{padding:0 0 20px 0; line-height: 22px;}
+.pop-create-group .s-txt{width:300px;margin:0 0 0 5px  }
+.pop-create-group .user-list{}
+.pop-create-group .user-list li{text-align:left;_position: static;zoom:1;}
+.wrap-layer .content-layer a.ico-close{_position: static}
+
+
+/*弹框提示信息*/
+.boxy-modal-blackout{position: absolute;left: 0; top: 0;}
+.html_clew_box { border:1px solid #ccc; border-radius:5px; color:#404040; position:fixed; z-index:999999; background:#fff;text-align:center;margin-top:1px;float:left;webkit-box-shadow:0 0 15px #888888;-moz-box-shadow:0 0 15px #888888;-khtml-box-shadow:0 0 15px #888888;-ms-box-shadow:0 0 15px #888888;box-shadow:0 0 15px #888888; }
+.clew_error { background-position:0 bottom; color:#f00 }
+.html_clew_box_close { clear:both; display:none }
+.html_clew_box_con { font-size:14px; padding:15px 25px; white-space: nowrap; font-weight: bold; }
+
+.boxy-content { text-align:left; padding:10px; }
+#input_dismissed { margin:10px 0 10px 0; }
+
+.ts_confirm{clear:left;margin-top:20px;*margin-top:0px;position:absolute;z-index:997;text-align:center;background:url(../image/pagedarkbg.png) repeat 0 0}
+.ts_confirm .ico-close{position:absolute;right:5px;top:5px}
+.ts_confirm .layer-mini-info{padding:15px;border:#ccc solid 1px;background:#fff;position:relative;*z-index:9999;}
+
+/*弹框页面信息*/
+.tsbox{z-index: 999;}
+.wrap-layer{color:#535353;position:absolute;-webkit-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);-moz-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);-khtml-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);-ms-box-shadow:0 2px 5px 1px rgba(0,0,0,.1);box-shadow:0 2px 5px 1px rgba(0,0,0,.1);}
+.wrap-layer .content-layer{border:#bbb solid 1px;position:relative;background:#fff;margin:0 auto; border-radius: 8px}
+/*弹框动画*/
+.show_box {
+    animation: showImageBox 0.5s cubic-bezier(.43, -0.07, .43, 1.33) 1 alternate;
+    -webkit-animation: showImageBox 0.5s cubic-bezier(.43, -0.07, .43, 1.33) 1 alternate;
+}
+.close_box {
+    animation: hideImageBox 0.5s ease-in-out backwards;
+    -webkit-animation: hideImageBox 0.5s ease-in-out backwards;
+}
+@keyframes showImageBox {
+    from {
+        opacity: 0;
+        transform: scale(0.4);
+        -webkit-transform: scale(0.4);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+@-webkit-keyframes showImageBox {
+    from {
+        opacity: 0;
+        transform: scale(0.4);
+        -webkit-transform: scale(0.4);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+@keyframes hideImageBox {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.4);
+        -webkit-transform: scale(0.4);
+    }
+}
+@-webkit-keyframes hideImageBox {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+    }
+}
+/*提示图标*/
+.ico-error,.ico-warn,.ico-ok,.ico-wait,.ico-no,.ico-ok-big,.ico-error-big{background:url(../../resource/img/ico-tips.png) no-repeat 0 0;display:inline-block;}
+/**+html .ico-error, .ico-ok,.ico-wait,.ico-no{background:url(../image/ico-tips.gif) no-repeat 0 0;display:inline-block;}*/
+.ico-error{background-position:-40px -32px;width:20px;height:20px;margin:0 15px 0 0;vertical-align:-4px}
+.ico-warn{background-position:-39px 0;width:20px;height:20px;margin:0 15px 0 0;vertical-align:-4px}
+.ico-ok{background-position:0 0;width:20px;height:20px;margin:0 15px 0 0;vertical-align:middle;*vertical-align:-2px}
+.ico-wait{background-position:0 -33px;width:20px;height:20px;margin:0 15px 0 0;vertical-align:middle}
+.ico-no{background-position:-40px -32px;width:20px;height:20px;margin:0 15px 0 0;vertical-align:middle}
+.ico-ok-big{background-position:-80px 0;width:38px;height:38px;vertical-align:middle;margin:0 10px 0 0;}
+.ico-error-big{background-position:-80px -48px;width:38px;height:38px;vertical-align:middle;margin:0 10px 0 0;}
+
+.boxy-modal-blackout {position: fixed;left: 0; top: 0;filter:alpha(opacity=30);-moz-opacity:.3;opacity:.3;background-color: #484744;}
