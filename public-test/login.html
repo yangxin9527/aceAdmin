@@ -63,27 +63,31 @@
 
 											<div class="space-6"></div>
 
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="用户名" />
+											<form id="login-form" name="login-form" class="form-horizontal">
+
+													<div class="form-group">
+														<label class="block clearfix">
+														<span class="block input-icon input-icon-right clearfix">
+															<input type="text" name="name" id="name" placeholder="用户名" class="col-xs-12 col-sm-12" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
-													</label>
-
-													<label class="block clearfix">
+														</label>
+													</div>
+													<div class="form-group">
+														<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
+															<input type="password" id="password" name="password" placeholder="密码" class="col-xs-12 col-sm-12" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
-													</label>
+														</label>
+
+													</div>
 
 													<div class="space"></div>
 
 													<div class="clearfix">
 														<label class="inline">
-															<input type="checkbox" class="ace" />
+															<input type="checkbox" class="ace remeberme"  />
 															<span class="lbl">记住我</span>
 														</label>
 
@@ -94,7 +98,7 @@
 													</div>
 
 													<div class="space-4"></div>
-												</fieldset>
+
 											</form>
 										</div><!-- /.widget-main -->
 
@@ -129,17 +133,20 @@
 												输入你的邮箱去找回密码
 											</p>
 
-											<form>
+											<form id="retrieve-form" name="retrieve-form" >
 												<fieldset>
-													<label class="block clearfix">
+													<div class="form-group">
+														<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="邮箱" />
+															<input type="email" class="form-control" name="email" placeholder="邮箱" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
-													</label>
+														</label>
+													</div>
+
 
 													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-danger" id="retrieve-btn">
 															<i class="ace-icon fa fa-lightbulb-o"></i>
 															<span class="bigger-110">发送邮件</span>
 														</button>
@@ -168,44 +175,51 @@
 											<div class="space-6"></div>
 											<p> 输入您的详细信息 </p>
 
-											<form>
+											<form id="signup-form" name="signup-form">
 												<fieldset>
-													<label class="block clearfix">
+													<div class="form-group">
+													<label class="block clearfix ">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="email" class="form-control" name="email" placeholder="Email" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
+													</div>
 
+													<div class="form-group">
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="用户名" />
+															<input type="text" class="form-control" name="name" placeholder="用户名" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
+													</div>
 
+													<div class="form-group">
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
+															<input type="password" class="form-control" name="password" placeholder="密码" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
-
+													</div>
+													<div class="form-group">
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="重复密码" />
+															<input type="password" class="form-control" name="password2" placeholder="重复密码" />
 															<i class="ace-icon fa fa-retweet"></i>
 														</span>
 													</label>
-
+													</div>
+													<div class="form-group">
 													<label class="block">
-														<input type="checkbox" class="ace" />
+														<input type="checkbox" class="ace" name="agree" />
 														<span class="lbl">
 															我接受
 															<a href="#">用户协议</a>
 														</span>
 													</label>
-
+													</div>
 													<div class="space-24"></div>
 
 													<div class="clearfix">
@@ -214,7 +228,7 @@
 															<span class="bigger-110">重置</span>
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+														<button type="button" class="width-65 pull-right btn btn-sm btn-success" id="signup-btn">
 															<span class="bigger-110">注册</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -254,6 +268,17 @@
 			if('ontouchstart' in document.documentElement) document.write("<script src='../components/_mod/jquery.mobile.custom/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>
 
+		<script src="../resource/js/message.js"></script>
+		<script src="../resource/js/config.js"></script>
+
+		<script src="../resource/js/jquery.cookies.2.2.0.js"></script>
+		<script src="../resource/js/jquery.pagination.js"></script>
+		<script src="../resource/js/jquery-form.js"></script>
+		<script src="../resource/js/jquery.validate.js"></script>
+
+		<script src="../resource/js/public.js"></script>
+
+
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			$(function () {
@@ -263,9 +288,174 @@
                     $('.widget-box.visible').removeClass('visible');//hide others
                     $(target).addClass('visible');//show target
                 });
+                //登录验证
+                $('#login-form').validate({
+                    errorElement: 'div',
+                    errorClass: 'help-block',
+                    focusInvalid: false,
+                    ignore: ".remeberme",
+                    rules: {
+                        name: {
+                            required: true
+                        },
+                        password: {
+                            required: true,
+                            minlength: 5
+                        }
+                    },
+                    messages: {
+                        name: {
+                            required: "请输入用户名"
+                        },
+                        password: {
+                            required: "请输入密码",
+                        }
+                    },
+
+
+                    highlight: function (e) {
+                        $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+                    },
+
+                    success: function (e) {
+                        $(e).closest('.form-group').removeClass('has-error');//.addClass('has-info');
+                        $(e).remove();
+                    },
+
+                    errorPlacement: function (error, element) {
+                        error.insertAfter(element.parent());
+                    },
+                    submitHandler: function (form) {
+                    },
+                    invalidHandler: function (form) {
+                    }
+                });
                 $("#login-btn").on("click",function () {
-					document.location.href="./ajax/index.html"
+                    if($('#login-form').valid()){
+                        Data.dataSubmit("POST","login.json",1,"login-form",false,function(data){
+                            console.log(data)
+                            loginSuccess(data);
+//                            document.location.href="./index.html"
+                        });
+					}
                 })
+
+				//找回密码验证
+                $('#retrieve-form').validate({
+                    errorElement: 'div',
+                    errorClass: 'help-block',
+                    focusInvalid: false,
+                    ignore: ".remeberme",
+                    rules: {
+                        email: {
+                            required: true
+                        }
+                    },
+
+
+
+                    highlight: function (e) {
+                        $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+                    },
+
+                    success: function (e) {
+                        $(e).closest('.form-group').removeClass('has-error');//.addClass('has-info');
+                        $(e).remove();
+                    },
+
+                    errorPlacement: function (error, element) {
+                        error.insertAfter(element.parent());
+                    },
+                    submitHandler: function (form) {
+                    },
+                    invalidHandler: function (form) {
+                    }
+                });
+                $("#retrieve-btn").on("click",function () {
+                    if($('#retrieve-form').valid()){
+                        Data.dataSubmit("POST","login.json",1,"login-form",false,function(data){
+                            console.log(data)
+
+                        });
+                    }
+                })
+
+				//注册验证
+                $('#signup-form').validate({
+                    errorElement: 'div',
+                    errorClass: 'help-block',
+                    focusInvalid: false,
+                    ignore: ".remeberme",
+                    rules: {
+                        email: {
+                            required: true,
+                            email:true
+                        },
+                        name: {
+                            required: true
+                        },
+                        password: {
+                            required: true,
+                            minlength: 5
+                        },
+                        password2: {
+                            required: true,
+                            minlength: 5,
+                            equalTo: "#signup-box input[name=password]"
+                        },
+                        agree: {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        name: {
+                            required: "请输入用户名"
+                        },
+                        password: {
+                            required: "请输入密码",
+                        },
+						agree:"是否同意"
+                    },
+
+
+                    highlight: function (e) {
+                        $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+                    },
+
+                    success: function (e) {
+                        $(e).closest('.form-group').removeClass('has-error');//.addClass('has-info');
+                        $(e).remove();
+                    },
+
+                    errorPlacement: function (error, element) {
+                        if(element.is('input[type=checkbox]') || element.is('input[type=radio]')) {
+                          error.insertAfter(element.next("span"));
+                        }else{
+                        error.insertAfter(element.parent());
+
+						}
+
+                    },
+                    submitHandler: function (form) {
+                    },
+                    invalidHandler: function (form) {
+                    }
+                });
+                $("#signup-btn").on("click",function () {
+                    if($('#signup-form').valid()){
+                        Data.dataSubmit("POST","login.json",1,"login-form",false,function(data){
+                            console.log(data)
+                            loginSuccess(data);
+//
+                        });
+                    }
+                })
+
+				function loginSuccess(data) {
+					$.cookies.set("t",data.token);
+					$.cookies.set("user",data.user);
+                    document.location.href="./index.html"
+                }
             })
 		</script>
 	</body>

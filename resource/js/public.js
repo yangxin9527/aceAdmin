@@ -9,31 +9,44 @@ var ORGOBJ = "";
 /**
  * @description 数据增，查询（表格），查询（自定义），删
  */
-Page ={
-    getUser:function(){
-        var userObj = $.cookies.get("user");
-        return userObj;
-    }
-};
 
 Data = {
-    getOrg:function(){
-        ORGID = $.cookies.get("orgId");
-        if(ORGID){
-            ORGID = "o="+ORGID;
-            return ORGID;
-        }else{
-            return "";
+    open:function (data) {
+        if(!data.title){
+            data.title = "提示"
         }
+
+        if(!data.size){
+            data.size = null
+        }
+
+        $.ajax({url:data.url,
+            type:"GET",
+            data:"",
+            cache:false,
+            dataType:'html',
+            success:function(html){
+                bootbox.dialog({
+                    title:data.title,
+                    size:  data.size,
+                    message: html,
+                    buttons: data.buttons
+                });
+            }
+        });
     },
     getToken:function(){
-        tokenVal = $.cookies.get("token");
+        tokenVal = $.cookies.get("t");
         if(tokenVal){
             tokenVal = "t="+tokenVal;
             return tokenVal;
         }else{
             return "";
         }
+    },
+    getUser:function(){
+        var userObj = $.cookies.get("user");
+        return userObj;
     },
     /**
      * @description 异步提交表单
@@ -44,30 +57,21 @@ Data = {
      * @author yuxuemei
      * @date 2016-01-14
      */
-    dataSubmit : function (reguestType,requestUrl,remind,formName,callback){
-        Data.dataSubmitToken(reguestType,requestUrl,remind,formName,true,callback);
+    dataSubmit : function (reguestType,requestUrl,remind,formName,needToken,callback){
+        Data.dataSubmitToken(reguestType,requestUrl,remind,formName,needToken,callback);
     },
     checkUrlHasParam:function(url,needToken){
-        var user = Page.getUser();
-        if(user){
-            var o = "";
-            if(user.currentOrg){
-                o = "o="+user.currentOrg.orgId;
-            }else{
-                o = "o=0";
-            }
-            if(o){
-                url = Data.pingUrl(url,o);
-            }
-        }
         if(needToken){
             var t = Data.getToken();
             if(t){
                 url = Data.pingUrl(url,t);
+            }else{
+                delSession();
             }
         }
         return url;
     },
+    //拼接url
     pingUrl:function(url,newParam){
         if(url.indexOf("?") >= 0){
             if(url.substring(url.length-1,url.length) == "&"){
@@ -81,44 +85,14 @@ Data = {
         return url;
     },
     dataSubmitToken : function (reguestType,requestUrl,remind,formName,needToken,callback) {
-        var activeCss = {"background-color":"#1E8BC3","border":"1px solid #1E8BC3"};
         var _form = $("form[name='"+formName+"']");
-        _btn = $("form[name='"+formName+"'] .trueBtn");
-        _btn.css({"background-color":"#ccc","border":"1px solid #ccc"});
-        if(_btn.attr("bool") != 1){
-            core.loadFile(THEME_URL + 'js/public/jquery-form.js',function () {
-                //IE跨域请求处理
+
                 if(needToken == null){
                     needToken = false;
                 }
                 var url = Data.checkUrlHasParam(BASEURL + requestUrl,needToken);
                 var urlIe = url+"&"+_form.serialize();
 
-                if(false){//判断浏览器版本是否为IE
-                    var xdr = new XDomainRequest();
-                    xdr.open(reguestType,urlIe + "&uuid=" + getUUId());
-                    xdr.send();
-                    xdr.onload=function(){
-                        var data=jQuery.parseJSON(xdr.responseText); //支持ie6,7
-                        if (!data.code) {
-                            if(!remind){
-                                //若需要特殊提示则isRemind设置1后再相应请求的回调函数中处理提示信息
-                                ui.success(data.msg);
-                            }
-                            if(callback != undefined){
-                                callback(data);
-                            }
-                            _btn.attr("bool","1");
-                        }else{
-                            //失败显示错误信息
-                            _btn.css(activeCss);
-                            getErrorMess(data.code,data.msg);
-                        }
-                    };
-                    xdr.onerror = function (e) {
-                        _btn.css(activeCss);
-                    }
-                }else{
                     var options = {
                         type:reguestType,
                         url: url,
@@ -133,25 +107,25 @@ Data = {
                                     //若需要特殊提示则isRemind设置1后再相应请求的回调函数中处理提示信息
                                     ui.success(data.msg);
                                 }
-                                _btn.attr("bool","1");
+
                                 if(callback != undefined){
                                     callback(data);
                                 }
                             }else{
-                                _btn.css(activeCss);
+
                                 getErrorMess(data.code,data.msg);
                             }
                         },
                         error: function(data) {
-                            _btn.css(activeCss);
+
                             hideLoad();//清除lodaing
                         }
                     };
                     _form.ajaxSubmit(options);
                     return false; // 阻止表单自动提交事件
-                }
-            });
-        }
+
+
+
     },
     /**
      * @description ajax获取数据-表格插件(含分页)
@@ -634,16 +608,16 @@ var getWh = function(){
  * @editor yxm 2016-04-07
  */
 var showLoad = function(){
-    getWh();
-    window.onresize = function () {
-        getWh();
-        $('#loading').css({'width':_w,'height':_h});
-    };
-    //查找有没有正在加载的元素 ，没有再追加
-    if($('body').find("#loading").length == 0 && $('body').find("#loading_img").length == 0){
-        $('body').append('<div id="loading" class="boxy-modal-blackout" style="opacity: 0.1; height: '+_h+'px; width: '+_w+'px; z-index: 991;"></div>\n\
-                      <img id="loading_img" style="position:absolute;z-index: 992;top:'+_top+'px;left:'+_left+'px;" src="'+THEME_URL+'/images/public/loadings.gif">');
-    }
+    // getWh();
+    // window.onresize = function () {
+    //     getWh();
+    //     $('#loading').css({'width':_w,'height':_h});
+    // };
+    // //查找有没有正在加载的元素 ，没有再追加
+    // if($('body').find("#loading").length == 0 && $('body').find("#loading_img").length == 0){
+    //     $('body').append('<div id="loading" class="boxy-modal-blackout" style="opacity: 0.1; height: '+_h+'px; width: '+_w+'px; z-index: 991;"></div>\n\
+    //                   <img id="loading_img" style="position:absolute;z-index: 992;top:'+_top+'px;left:'+_left+'px;" src="'+THEME_URL+'/images/public/loadings.gif">');
+    // }
 };
 
 /**
@@ -652,8 +626,8 @@ var showLoad = function(){
  * @date 2016-01-14
  */
 var hideLoad = function(){
-    $('#loading').remove();
-    $('#loading_img').remove();
+    // $('#loading').remove();
+    // $('#loading_img').remove();
 };
 
 /*
@@ -837,80 +811,7 @@ Date.prototype.format = function(format) {
     }
     return format;
 }
-/**
- * @description 自动生成唯一uuid
- * @return 返回生成的唯一编号
- * @author yuxuemei
- * @date 2016-03-10
- */
-function getUUId() {
-    var s = [];
-    var hexDigits = "0123456789abcdef";
-    for (var i = 0; i < 36; i++) {
-        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-    }
-    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-    s[8] = s[13] = s[18] = s[23] = ""; //去掉"-"
-    var uuid = s.join("");
-    return uuid;
-}
 
-
-/**
- * @description 加载省市区及详细地址公共函数
- * @parame pid 地址id
- * @parame selectId 下拉框的id
- * @parame editId 后台返回的地址id用于编辑时显示
- * @parame callback 用于编辑时显示
- * @author yuxuemei
- * @date 2016-03-10
- */
-function loadAddress(pid,selectId,editId,callback) {
-    Data.getDataComb("get","/user/v1/user/area?pid="+pid,"",1,function(data){
-        if(selectId == "showCity"){
-            $("#showCity").show();
-        }else if(selectId == "showCounty"){
-            $("#showCounty,#showAddressDiv").show();
-        }
-        $('<option value="">请选择</option>').appendTo("#"+selectId);
-        var areaList = data.data;
-        var areaListLen = areaList.length;
-        var html = "";
-        for(var i = 0; i < areaListLen; i ++) {
-            var area = areaList[i];
-            html = "<option  val='"+area.title+"' value='"+area.areaId+"'";
-            if(area.areaId == editId){
-                html += "selected='true'";
-            }
-            html += ">"+area.title+"</option>";
-            $("#"+selectId).append(html);
-        }
-        if(callback){
-            callback();
-        }
-    });
-}
-
-//获取组织下拉
-function getOrg(elementId,editId){
-    var reguestUrl = "/user/v1/getOrgByLevel";
-    Data.getDataComb("POST",reguestUrl,"",1,function(data){
-        var html;
-        if(!data.code){
-            var length = data.data.length;
-            var array = data.data;
-            for (var i = 0; i < length; i++) {
-                html = "<option value='"+array[i].orgId+"'";
-                if(array[i].orgId == parseInt(editId)){
-                    html += "selected='true'";
-                }
-                html += ">"+array[i].name+"</option>";
-                $("#"+elementId).append(html);
-            };
-        }
-    });
-}
 
 //日期获取
 function GetDateStr(AddDayCount) {
@@ -929,18 +830,12 @@ function GetDateStr(AddDayCount) {
 }
 
 //重新查询用户并设置session
-function getUserSession(){
-    Data.getDataComb("get","/user/v1/user?m=q","",1,function(userData){
-        $.cookies.set('user',userData.data);
-    })
-}
+// function getUserSession(){
+//     Data.getDataComb("get","/user/v1/user?m=q","",1,function(userData){
+//         $.cookies.set('user',userData.data);
+//     })
+// }
 
-//更新缓存数据
-function updateCache(){
-    var reguestUrl = "/api/system/cache?m=query&token="+TOKEN+"&";
-    Data.getDataComb("POST",1,reguestUrl,"",function(data){
-    });
-}
 
 function getErrorMess(code,error){
     //返回404切为权限过期时才返回登录页面
@@ -964,15 +859,10 @@ function getErrorMess(code,error){
 }
 
 function delSession(){
-    $.cookies.del('session');
-    $.cookies.del('token');
-    $.cookies.del('phone');
-    $.cookies.del('password');
+    $.cookies.del('t');
     $.cookies.del('user');
-    //如果当前已经在登登录页面，则不跳转
-    if(window.location.href.indexOf("login") == -1){
-        location.href ="../../gateway/public/login.html";
-    }
+    location.href ="./login.html";
+
 }
 
 function caclDataW(){
@@ -1010,71 +900,3 @@ function isEmptyObject(e) {
 }
 
 
-/**
- * @description 获取部门树
- * @parame obj jquery选择器对象 例如：$("#departTree")
- * @author yuxuemei
- * @date 2016-03-10
- */
-function getDepartMenu(obj,callback,orgId){
-    var reguestUrl = "/user/v1/getListDepartment";
-    var user = Page.getUser();
-    if(user && user.currentOrg){
-        var param = "orgId="+user.currentOrg.orgId;
-    }else{
-        var param = "";
-    }
-    Data.getDataComb("POST",reguestUrl,param,1,function(data){
-        var allTab = {"departmentId":"0","name":"全部"};
-        zNodes = data.data;
-        if(obj.is(".ztreeSelect") && !obj.is(".noAll")){
-            zNodes.splice(0, 0, allTab);
-        }
-        if(obj.selector == "#deptDemo"){
-            //下拉设置 ====解决部门管理有页面也有下拉树问题
-            $.fn.zTree.init(obj, setting_select, zNodes);
-        }else{
-            $.fn.zTree.init(obj, setting, zNodes);
-        }
-        if(callback != undefined){
-            callback();
-        }
-        // 部门树加载完成后,执行该方法(解决需要回显部门时,部门树还没有加载出来)
-        try{
-            deptTreeLoadCallBack();
-        } catch(e) {}
-
-    });
-}
-
-/**
- * @description 获取岗位树
- * @parame obj jquery选择器对象 例如：$("#postTree")
- * @author yuxuemei
- * @date 2016-03-10
- */
-function getPostMenu(obj,callback){
-    var reguestUrl = "/user/v1/getListPort";
-    var user = Page.getUser();
-    if(user && user.currentOrg){
-        var param = "orgId="+user.currentOrg.orgId;
-    }else{
-        var param = "";
-    }
-    Data.getDataComb("POST",reguestUrl,param,1,function(data){
-        var allTab = {"postId":"0","name":"全部"};
-        zNodes = data.data;
-        if(obj.is(".ztreeSelect") && !obj.is(".noAll")){
-            zNodes.splice(0, 0, allTab);
-        }
-        $.fn.zTree.init(obj, setting, zNodes);
-        if(callback){
-            callback();
-        }
-
-        // 岗位树加载完成后,执行该方法(解决需要回显岗位时,岗位树还没有加载出来)
-        /*try{
-         postTreeLoadCallBack();
-         } catch(e) {}*/
-    });
-}

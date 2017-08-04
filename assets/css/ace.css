@@ -12670,7 +12670,10 @@ tr.detail-row > td {
   padding-right: 15px;
 }
 .login-layout label {
-  margin-bottom: 11px;
+  margin-bottom: 0;
+}
+.login-layout .help-block{
+  margin-bottom: 0;
 }
 .login-layout .widget-box {
   visibility: hidden;

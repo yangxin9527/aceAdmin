@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "登录成功",
+  "token": "lalalala",
+  "user":{
+    "name":"yx",
+    "age":16,
+    "avatars":"resource/img/avatars.png"
+  }
+
+}

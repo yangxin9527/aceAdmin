@@ -350,7 +350,7 @@ $.extend( $.validator, {
 	},
 
 	messages: {
-		required: "This field is required.",
+		required: REQUIRED_FIELD,
 		remote: "Please fix this field.",
 		email: VAILD_EMAIL,
 		url: "Please enter a valid URL.",
@@ -358,9 +358,9 @@ $.extend( $.validator, {
 		dateISO: "Please enter a valid date ( ISO ).",
 		number: "Please enter a valid number.",
 		digits: "Please enter only digits.",
-		equalTo: "Please enter the same value again.",
-		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
-		minlength: $.validator.format( "Please enter at least {0} characters." ),
+		equalTo: EQUALTO,
+		maxlength: $.validator.format( MAX_LENGTH ),
+		minlength: $.validator.format( MIN_LENGTH ),
 		rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
 		range: $.validator.format( "Please enter a value between {0} and {1}." ),
 		max: $.validator.format( "Please enter a value less than or equal to {0}." ),

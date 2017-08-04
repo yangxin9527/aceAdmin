@@ -51,7 +51,7 @@
 	* @see Gritter#removeSpecific();
 	*/
 	$.gritter.remove = function(id, params){
-		Gritter.removeSpecific(id, params || {});
+		Gritter.removeSpecific(id, params || {});0
 	}
 	
 	/**

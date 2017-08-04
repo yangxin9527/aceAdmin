@@ -162,14 +162,14 @@
 					</li>
 
 					<!-- #section:basics/navbar.user_menu -->
-					<li class="light-blue dropdown-modal">
+					<li class="light-blue dropdown-modal" id="welcome-info">
 						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-							<img class="nav-user-photo" src="../resource/avatars/user.jpg"/>
-							<span class="user-info">
-									<small>欢迎你,</small>
-									admin
-								</span>
 
+							<img class="nav-user-photo" src="../resource/avatars/user.jpg"/>
+							<span class="user-info" >
+									欢迎你,
+								<small></small>
+							</span>
 							<i class="ace-icon fa fa-caret-down"></i>
 						</a>
 
@@ -184,7 +184,7 @@
 							<li class="divider"></li>
 
 							<li>
-								<a href="./../login.html">
+								<a id="loginout" href="./login.html">
 									<i class="ace-icon fa fa-power-off"></i>
 									退出登录
 								</a>
@@ -206,7 +206,7 @@
 		<div id="sidebar" class="sidebar responsive ace-save-state">
 			<ul class="nav nav-list">
 				<li class="">
-					<a data-url="page/index" href="#page/index">
+					<a data-url="page/profile-old" href="#page/profile-old">
 						<i class="menu-icon fa fa-tachometer"></i>
 						<span class="menu-text"> 后台概览 </span>
 					</a>
@@ -360,9 +360,13 @@
 	<script src="../resource/js/ace-elements.js"></script>
 	<script src="../resource/js/ace-extra.js"></script>
 
+
+	<script src="../resource/js/message.js"></script>
+	<script src="../resource/js/config.js"></script>
 	<script src="../resource/js/jquery.cookies.2.2.0.js"></script>
 	<script src="../resource/js/jquery.pagination.js"></script>
-	<script src="../resource/js/message.js"></script>
+
 	<script src="../resource/js/public.js"></script>
-	<script src="../resource/js/config.js"></script>
+	<script src="../resource/js/common.js"></script>
+
 

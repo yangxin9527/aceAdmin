@@ -50,77 +50,76 @@ $('.page-content-area').ace_ajax('loadScripts', scripts, function () {
 
 
             ];
-
-
-
         Data.getDataTable("get", reguestUrl, requestParams, 1, "advertList", columns, "data", 2, 10, function () {
-            $("#advertList").on("click",".js-edit",function () {
-
-                $.ajax({url:"./admin/menu3.html",
-                    type:"GET",
-                    data:"",
-                    cache:false,
-                    dataType:'html',
-                    success:function(html){
-                        bootbox.dialog({
-                            title:"hello",
-                            size: 'large',
-                            message: html,
-                            buttons: {
-                                "success": {
-                                    "label": "<i class='ace-icon fa fa-check'></i> Success!",
-                                    "className": "btn-sm btn-success",
-                                    "callback": function () {
-                                        console.log("great success");
-                                    }
-                                },
-                                "danger": {
-                                    "label": "Danger!",
-                                    "className": "btn-sm btn-danger",
-                                    "callback": function () {
-                                       console.log("uh oh, look out!");
-                                    }
-                                },
-                                "click": {
-                                    "label": "Click ME!",
-                                    "className": "btn-sm btn-primary",
-                                    "callback": function () {
-                                        console.log("Primary button");
-                                    }
-                                },
-                                "button": {
-                                    "label": "Just a button...",
-                                    "className": "btn-sm",
-                                    "callback":function () {
-                                        console.log($("#name").val())
-                                    }
-                                }
-                            }
-                        });
-                    }
-                });
-
-            })
-            $("#advertList").on("click",".js-delete",function () {
-                console.log($(this).attr("flag"))
-                bootbox.dialog(
-                    {
-                        message:"hello",
-                        closeButton:false,
-                        size:"small"
-                    }
-
-                );
-                setTimeout(function () {
-                    bootbox.hideAll()
-                },1000)
-
-
-
-            })
 
         });
-    }
 
+    }
+    $("#advertList").on("click",".js-edit",function () {
+        Data.open({
+            url:"./admin/menu3.html",
+            title:"hello",
+            size: 'large',
+            buttons: {
+                "success": {
+                    "label": "<i class='ace-icon fa fa-check'></i> Success!",
+                    "className": "btn-sm btn-success",
+                    "callback": function () {
+                        Data.open({
+                            url: "./admin/menu3.html",
+                            title: "hello",
+                            size: 'large',
+                            buttons: {
+
+                            }
+                        })
+
+
+
+                    }
+                },
+                "danger": {
+                    "label": "Danger!",
+                    "className": "btn-sm btn-danger",
+                    "callback": function () {
+                        console.log("uh oh, look out!");
+                    }
+                },
+                "click": {
+                    "label": "Click ME!",
+                    "className": "btn-sm btn-primary",
+                    "callback": function () {
+                        console.log("Primary button");
+                    }
+                },
+                "button": {
+                    "label": "Just a button...",
+                    "className": "btn-sm",
+                    "callback":function () {
+                        console.log($("#name").val())
+                    }
+                }
+            }
+        });
+
+
+    })
+    $("#advertList").on("click",".js-delete",function () {
+        console.log($(this).attr("flag"))
+        bootbox.dialog(
+            {
+                message:"hello",
+                closeButton:false,
+                size:"small"
+            }
+
+        );
+        setTimeout(function () {
+            bootbox.hideAll()
+        },1000)
+
+
+
+    })
 
 });
