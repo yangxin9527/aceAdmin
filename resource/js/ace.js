@@ -180,15 +180,15 @@ jQuery(function($) {
                 //please refer to documentation for more info
 				//匹配路径
                 if( !hash.match(/^page\//) ){
-                    hash="page/error-404";
+                    hash="page/public/error-404";
                 };
                 var path = document.location.pathname;
 
                 //for example in Ace HTML demo version we convert /ajax/index.html#page/gallery to > /ajax/content/gallery.html and load it
 
 				// 文件请求匹配进入ajax载入页面
-                if(path.match(/(\/public-test\/)(index\.html)?/))
-                    return path.replace(/(\/public-test\/)(index\.html)?/, '/public-test/admin/'+hash.replace(/^page\//, '')+'.html') ;
+                if(path.match(/(\/public\/)(index\.html)?/))
+                    return path.replace(/(\/public\/)(index\.html)?/, '/public/admin/'+hash.replace(/^page\//, '')+'.html') ;
 
                 //for example in Ace PHP demo version we convert "ajax.php#page/dashboard" to "ajax.php?page=dashboard" and load it
                 return path + "?" + hash.replace(/\//, "=");

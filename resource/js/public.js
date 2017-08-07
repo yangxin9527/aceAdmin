@@ -51,7 +51,7 @@ Data = {
     /**
      * @description 异步提交表单
      * @param reguestType 请求服务器的方式 get/post
-     * @param remind 是否需要提示信息 0：需要；1：不需要
+     * @param remind 是否需要提示信息 1：需要；0：不需要
      * @param requestUrl 请求服务器url地址
      * @param callback 表单提交成功之后的回调函数
      * @author yuxuemei
@@ -103,7 +103,7 @@ Data = {
                             data = DataDeal.parseString(data);
                             // 此处可对 data 作相关处理
                             if(!data.code){
-                                if(!remind){
+                                if(remind){
                                     //若需要特殊提示则isRemind设置1后再相应请求的回调函数中处理提示信息
                                     ui.success(data.msg);
                                 }
@@ -245,7 +245,7 @@ Data = {
      * @param reguestType 请求服务器的方式 get/post
      * @param requestUrl 请求服务器url地址
      * @param requestParams 传给服务器的参数 例：name=zhang&password=123456
-     * @param remind 是否需要弹出提示信息 0:需要弹出；1：不需要弹出
+     * @param remind 是否需要弹出提示信息 1:需要弹出；0：不需要弹出
      * @param callback 回调函数
      * @author yuxuemei
      * @date 2016-01-15
@@ -291,8 +291,8 @@ Data = {
                 callback(data);
                 if (data.code == 0) {
                     //弹出成功提示信息
-                    if(!remind){
-                        ui.success(data.msg);
+                    if(remind){
+                        alert("success")
                     }
                 }else{
                     //判断用户权限的接口不提示错误信息
@@ -316,7 +316,8 @@ Data = {
      * @date 2016-03-02
      */
     showDataTemplate : function(requestUrl,requestParams,reguestType,remind,templateId,data,elementId,current,needToken,callback){
-        core.loadFile(THEME_URL + 'js/public/nodetpl.client.min.js',function(){
+
+        if(typeof nodetpl !=="undefined"){
             //模板id的内容
             var content = $("#"+templateId).html();
             //执行渲染
@@ -331,7 +332,25 @@ Data = {
                     Data.dataPaginationTemplate(requestUrl,requestParams,reguestType,remind,templateId,data.data.pages,elementId,current,needToken,callback);
                 }
             });
-        })
+        }else{
+            $.getScript(OBJECTURL + 'resource/js/nodetpl.client.min.js',function(){
+                //模板id的内容
+                var content = $("#"+templateId).html();
+                //执行渲染
+                nodetpl.render(content, data, function(dom){
+                    //将数据显示在html页面上
+                    $("#"+elementId).html(dom);
+                    if(callback != undefined){
+                        callback(data);
+                    }
+                    //传入0为不翻页
+                    if(current){
+                        Data.dataPaginationTemplate(requestUrl,requestParams,reguestType,remind,templateId,data.data.pages,elementId,current,needToken,callback);
+                    }
+                });
+            })
+        }
+
     },
     /**
      * @description ajax获取数据--使用模板引擎显示(含分页)
@@ -403,7 +422,7 @@ Data = {
                 data = DataDeal.parseString(data);
                 if (!data.code) {
                     //弹出成功提示信息
-                    if(!remind){
+                    if(remind){
                         ui.success(data.msg);
                     }
                     //引用nodetpl.client.min.js支持模板显示
@@ -859,9 +878,20 @@ function getErrorMess(code,error){
 }
 
 function delSession(){
+    bootbox.dialog(
+        {
+            message:"token过期,正在退出登录",
+            closeButton:false,
+            size:"small"
+        }
+    );
     $.cookies.del('t');
     $.cookies.del('user');
-    location.href ="./login.html";
+    setTimeout(function () {
+        bootbox.hideAll();
+        location.href ="./login.html";
+    },1000);
+
 
 }
 

@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 widget-container-col">
+        <div class="widget-box">
+            <div class="widget-header">
+                <h5 class="widget-title">用户信息表</h5>
+                <div class="widget-toolbar">
+                    <a href="#" data-action="fullscreen" class="orange2">
+                        <i class="ace-icon fa fa-expand"></i>
+                    </a>
+
+                    <a href="#" data-action="reload">
+                        <i class="ace-icon fa fa-refresh"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="dataTables_length" >
+                                <label>Display
+                                    <select class="input-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                    records</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="dataTables_filter">
+                                <label>Search:<input type="search" class="input-sm" placeholder="">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <table id="advertList" class="table table-striped table-bordered table-hover dataTable no-footer"
+                           style="width: 100%;">
+                        <thead>
+                        <tr role="row">
+                            <td width="100px">
+                                <label>
+                                    <input type="checkbox" class="ace">
+                                    <span class="lbl"> 全选</span>
+                                </label>
+                            </td>
+                            <td width="10px">用户名</td>
+                            <td>邮箱</td>
+                            <td>
+                                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                                电话号码
+                            </td>
+                            <td>操作</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="../../resource/js/admin/user-list.js"></script>

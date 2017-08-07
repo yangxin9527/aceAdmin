@@ -1,0 +1,415 @@
+
+<title>个人信息 - Ace Admin</title>
+
+<!--<link rel="stylesheet" href="../../components/_mod/jquery-ui.custom/jquery-ui.custom.css" />-->
+<link rel="stylesheet" href="../../components/jquery.gritter/css/jquery.gritter.css" />
+<link rel="stylesheet" href="../../components/select2/dist/css/select2.css" />
+<link rel="stylesheet" href="../../components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
+<link rel="stylesheet" href="../../components/_mod/x-editable/bootstrap-editable.css" />
+
+<div class="page-header">
+	<h1>
+		个人信息
+	</h1>
+</div><!-- /.page-header -->
+
+<div class="row">
+	<div class="col-xs-12">
+		<div>
+			<div class="user-profile row">
+				<div class="col-xs-12 col-sm-3 center">
+					<div>
+						<!-- #section:pages/profile.picture -->
+						<span class="profile-picture">
+							<img id="avatar" class="editable img-responsive" src="../../assets/avatars/profile-pic.jpg" />
+						</span>
+
+						<!-- /section:pages/profile.picture -->
+						<div class="space-4"></div>
+
+						<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+							<div class="inline position-relative">
+									<i class="ace-icon fa fa-circle light-green"></i>
+									&nbsp;
+									<span class="white">Alex M. Doe</span>
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="col-xs-12 col-sm-9">
+					<!-- #section:pages/profile.info -->
+					<div class="profile-user-info profile-user-info-striped" id="profileItem">
+						<!--<div class="profile-info-row">-->
+							<!--<div class="profile-info-name"> Username </div>-->
+
+							<!--<div class="profile-info-value">-->
+								<!--<span class="editable" id="username">alexdoe</span>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<!--<div class="profile-info-row">-->
+							<!--<div class="profile-info-name"> Location </div>-->
+
+							<!--<div class="profile-info-value">-->
+								<!--<i class="fa fa-map-marker light-orange bigger-110"></i>-->
+								<!--<span class="editable" id="country">Netherlands</span>-->
+								<!--<span class="editable" id="city">Amsterdam</span>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<!--<div class="profile-info-row">-->
+							<!--<div class="profile-info-name"> Age </div>-->
+
+							<!--<div class="profile-info-value">-->
+								<!--<span class="editable" id="age">38</span>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<!--<div class="profile-info-row">-->
+							<!--<div class="profile-info-name"> Joined </div>-->
+
+							<!--<div class="profile-info-value">-->
+								<!--<span class="editable" id="signup">2010/06/20</span>-->
+							<!--</div>-->
+						<!--</div>-->
+
+						<!--<div class="profile-info-row">-->
+							<!--<div class="profile-info-name"> About Me </div>-->
+
+							<!--<div class="profile-info-value">-->
+								<!--<span class="editable" id="about">Editable as WYSIWYG</span>-->
+							<!--</div>-->
+						<!--</div>-->
+					</div>
+
+					<!-- /section:pages/profile.info -->
+					<div class="space-20"></div>
+
+					<div class="widget-box transparent">
+						<div class="widget-header widget-header-small">
+							<h4 class="widget-title blue smaller">
+								<i class="ace-icon fa fa-rss orange"></i>
+								最新动态
+							</h4>
+
+							<div class="widget-toolbar action-buttons">
+								<a href="#" data-action="reload">
+									<i class="ace-icon fa fa-refresh blue"></i>
+								</a>
+&nbsp;
+							</div>
+						</div>
+
+						<div class="widget-body">
+							<div class="widget-main padding-8">
+								<div id="profile-feed-1" class="profile-feed">
+									<div class="profile-activity clearfix">
+										<div>
+											<img class="pull-left" alt="Alex Doe's avatar" src="../../assets/avatars/avatar5.png" />
+											<a class="user" href="#"> Alex Doe </a>
+											changed his profile photo.
+											<a href="#">Take a look</a>
+
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												an hour ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<img class="pull-left" alt="Susan Smith's avatar" src="../../assets/avatars/avatar1.png" />
+											<a class="user" href="#"> Susan Smith </a>
+
+											is now friends with Alex Doe.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												2 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<i class="pull-left thumbicon fa fa-check btn-success no-hover"></i>
+											<a class="user" href="#"> Alex Doe </a>
+											joined
+											<a href="#">Country Music</a>
+
+											group.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												5 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<i class="pull-left thumbicon fa fa-picture-o btn-info no-hover"></i>
+											<a class="user" href="#"> Alex Doe </a>
+											uploaded a new photo.
+											<a href="#">Take a look</a>
+
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												5 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<img class="pull-left" alt="David Palms's avatar" src="../../assets/avatars/avatar4.png" />
+											<a class="user" href="#"> David Palms </a>
+
+											left a comment on Alex's wall.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												8 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<i class="pull-left thumbicon fa fa-pencil-square-o btn-pink no-hover"></i>
+											<a class="user" href="#"> Alex Doe </a>
+											published a new blog post.
+											<a href="#">Read now</a>
+
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												11 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<img class="pull-left" alt="Alex Doe's avatar" src="../../assets/avatars/avatar5.png" />
+											<a class="user" href="#"> Alex Doe </a>
+
+											upgraded his skills.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												12 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
+											<a class="user" href="#"> Alex Doe </a>
+
+											logged in.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												12 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<i class="pull-left thumbicon fa fa-power-off btn-inverse no-hover"></i>
+											<a class="user" href="#"> Alex Doe </a>
+
+											logged out.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												16 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+
+									<div class="profile-activity clearfix">
+										<div>
+											<i class="pull-left thumbicon fa fa-key btn-info no-hover"></i>
+											<a class="user" href="#"> Alex Doe </a>
+
+											logged in.
+											<div class="time">
+												<i class="ace-icon fa fa-clock-o bigger-110"></i>
+												16 hours ago
+											</div>
+										</div>
+
+										<div class="tools action-buttons">
+											<a href="#" class="blue">
+												<i class="ace-icon fa fa-pencil bigger-125"></i>
+											</a>
+
+											<a href="#" class="red">
+												<i class="ace-icon fa fa-times bigger-125"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="space-6"></div>
+
+					<div class="center">
+						<button type="button" class="btn btn-sm btn-primary btn-white btn-round">
+							<i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+							<span class="bigger-110">View more activities</span>
+
+							<i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- PAGE CONTENT ENDS -->
+	</div><!-- /.col -->
+</div><!-- /.row -->
+
+<!-- page specific plugin scripts -->
+
+<!--[if lte IE 8]>
+  <script src="../../components/ExplorerCanvas/excanvas.js"></script>
+<![endif]-->
+<script src="../../resource/js/admin/profile.js"></script>
+<script id="temp_profileItem" type="text/template">
+	<div class="profile-info-row">
+		<div class="profile-info-name"> Username </div>
+
+		<div class="profile-info-value">
+			<span class="editable" id="username"><?=data.username?></span>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> Location </div>
+
+		<div class="profile-info-value">
+			<i class="fa fa-map-marker light-orange bigger-110"></i>
+			<span class="editable" id="country">Netherlands</span>
+			<span class="editable" id="city">Amsterdam</span>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> Age </div>
+
+		<div class="profile-info-value">
+			<span class="editable" id="age"><?=data.age?></span>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> Joined </div>
+
+		<div class="profile-info-value">
+			<span class="editable" id="signup"><?=data.joined?></span>
+		</div>
+	</div>
+
+	<div class="profile-info-row">
+		<div class="profile-info-name"> About Me </div>
+
+		<div class="profile-info-value">
+			<span class="editable" id="about"><?=data.aboutme?></span>
+		</div>
+	</div>
+</script>

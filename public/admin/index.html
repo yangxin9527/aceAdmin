@@ -1,0 +1,14 @@
+
+<a href="#test">欢迎来到，后台首页</a>
+<div data-ajax-content="true" id="ajax-load">
+    加载其他页面
+</div>
+
+<script>
+    var scripts = [null, null];
+    $('.page-content-area').ace_ajax('loadScripts', scripts, function() {
+        $('#ajax-load').load("./admin/test.html",function () {
+            console.log($("#ddd").html())
+        })
+    });
+</script>

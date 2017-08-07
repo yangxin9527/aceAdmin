@@ -1,0 +1,15 @@
+{
+  "code": 0,
+  "data":
+    {
+      "id": 12,
+      "username": "\u5c0f\u660e1",
+      "email": "lalala@sina.com",
+      "phone": "18011111111",
+      "avatar": null,
+      "age": "18",
+      "admin": null,
+      "joined": "2010/06/20",
+      "aboutme":"自我介绍，1,2,3"
+    }
+}
